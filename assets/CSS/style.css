@@ -1,0 +1,33 @@
+* {
+    border: dashed red;
+}
+
+header {
+    font-size: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+}
+
+.quiz-block {
+    margin: 15%;
+}
+
+.quiz-block button {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 40%;
+    margin-top: 5%;
+}
+
+.quiz-block h1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 5%;
+    font-size: 35px;
+}
+
+.quiz-block p {
+    font-size: 20px;
+}
