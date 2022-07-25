@@ -16,7 +16,7 @@ header {
 .quiz-block button {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 40%;
+    margin-left: auto;
     margin-top: 5%;
 }
 
