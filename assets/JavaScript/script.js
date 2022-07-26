@@ -1,5 +1,5 @@
 // Start Button
-var startBtn = document.querySelector (".start-button");
+var startBtn = document.querySelector (".button-one");
 startBtn.addEventListener("click", startQuiz);
 
 //Countdown Timer
@@ -17,8 +17,20 @@ function countdown () {
     }
 }
 
+// Question 1
+var questionOne = firstQuestion();
+
+function firstQuestion() {
+    
+    document.querySelector("question").innerHTML = `Commonly used data types DO NOT include:`;
+    document.querySelector(".button-one").innerHTML = `Strings`;
+    document.querySelector(".button-two").innerHTML = `Booleans`;
+    document.querySelector(".button-three").innerHTML = `Alerts`;
+    document.querySelector(".button-four").innerHTML = `Numbers`;
+}
 
 // Getting to the first question
 function startQuiz() {
-    countdown();
+    countdown(); 
+    firstQuestion();
 }
