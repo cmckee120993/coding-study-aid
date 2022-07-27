@@ -13,9 +13,7 @@ function countdown () {
         timer = setTimeout (countdown, 1000);
     }
     else {
-        alert(`Times up!!! 
-        Your score: ${score}
-        Refresh the page to try again!`);
+        scoreReveal();
     }
 }
 
@@ -24,7 +22,8 @@ var choiceA = document.getElementById("A");
 var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
 var choiceD = document.getElementById("D");
-var question = document.querySelector (".question");
+var question = document.querySelector(".question");
+var title = document.getElementById("title");
 
 var questions = [
     {
@@ -51,7 +50,7 @@ var questions = [
         choiceB: "Other arrays",
         choiceC: "Booleans",
         choiceD: "All of the above",
-        correct: "A"
+        correct: "D"
     },
 
     {
@@ -91,7 +90,7 @@ function renderQuestion(){
 
 function checkAnswer(answer) {
     if (questions[runningQuestionIndex].correct === answer) {
-        score = score + 11;
+        score = score + 10;
         console.log("Yay!");
     } else {
         count = count - 15;
@@ -108,6 +107,31 @@ function checkAnswer(answer) {
 
 // Score earned during the quiz
 var score = 0;
+
+// Reveal score at the end of the quiz
+
+function scoreReveal() {
+    // Show score
+    title.textContent = "Finished!";
+    question.textContent = `Your score is ${score}.`;
+   
+    // Remove choices from quiz
+    choiceA.style.display = "none";
+    choiceB.style.display = "none";
+    choiceC.style.display = "none";
+    choiceD.style.display = "none";
+
+    // Creating input submission for initials
+    var initials = document.createElement("input", "type", "text");
+    initials.setAttribute("id", "initials");
+    initials.setAttribute("placeholder", "Type your initials!");
+    initials.setAttribute("size", "20");
+    var submit = document.createElement ("button");
+    submit.innerHTML = "Submit!"
+    question.appendChild(initials);
+    question.appendChild(submit);
+}
+
 
 // Running the quiz
 function takeQuiz() {
