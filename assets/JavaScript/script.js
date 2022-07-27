@@ -126,10 +126,21 @@ function scoreReveal() {
     initials.setAttribute("id", "initials");
     initials.setAttribute("placeholder", "Type your initials!");
     initials.setAttribute("size", "20");
-    var submit = document.createElement ("button");
+    var submit = document.createElement ("button", "id", "submit");
     submit.innerHTML = "Submit!"
     question.appendChild(initials);
     question.appendChild(submit);
+
+    // Adding click function to button
+        submit.addEventListener("click", function() {
+        localStorage.setItem('name', JSON.stringify(initials.value));
+        localStorage.setItem('score', score);
+        // var highScores = JSON.parse(localStorage.getItem("scores"))
+        // if (highScores === null) {
+        //     var highScoreList = [];
+        //     var newScore = new 
+        // }
+    })
 }
 
 
