@@ -19,20 +19,6 @@ function countdown () {
     }
 }
 
-// // // Correct or Incorrect Answer Colors
-// // var allBtns = document.querySelector("button");
-// var rightWrong = document.querySelector ("div");
-
-// function changeRed() {
-// rightWrong.style.backgroundColor = "red";
-// // allBtns.style.color = "white";
-// }
-
-// function changeGreen() {
-// rightWrong.style.backgroundColor = "green";
-// // allBtns.style.color = "white";
-// }
-
 // Questions in one variable
 var choiceA = document.getElementById("A");
 var choiceB = document.getElementById("B");
@@ -100,29 +86,18 @@ function renderQuestion(){
     choiceD.textContent = q.choiceD; 
 }
 
-// Right or Wrong Answers
-
-// function rightAnswer() {
-//     document.getElementById(runningQuestionIndex).style.backgroundColor = "green";
-// }
-
-// function wrongAnswer() {
-//     document.getElementById(runningQuestionIndex).style.backgroundColor = "red";
-// }
 
 // Check answers
 
 function checkAnswer(answer) {
     if (questions[runningQuestionIndex].correct === answer) {
-        score++;
+        score = score + 11;
         console.log("Yay!");
-        // rightAnswer();
     } else {
-        // wrongAnswer();
+        count = count - 15;
         console.log("Non ):");
     }
     if(runningQuestionIndex < lastQuestionIndex) {
-        count = 0;
         runningQuestionIndex++;
         renderQuestion();
     } else {
@@ -138,43 +113,12 @@ var score = 0;
 function takeQuiz() {
 startBtn.remove();
 renderQuestion();
-
-// This may be needed to have questions continue to the next one
-// runningQuestionIndex++;
-// renderQuestion();
-// runningQuestionIndex++;
-// renderQuestion();
-// runningQuestionIndex++;
-// renderQuestion();
-
-// // Variables for Questions attempt 1
-//     var questionEl = document.querySelector (".question");
-//     var btnOneEl = document.querySelector ("#A");
-//     var btnTwoEl = document.querySelector ("#B");
-//     var btnThreeEl = document.querySelector ("#C");
-//     var btnFourEl = document.querySelector ("#D");
-
-// // Question 1
-//     questionEl.textContent = "Commonly used data types DO NOT include:";
-//     btnOneEl.textContent = "Strings";
-//     btnTwoEl.textContent = "Booleans";
-//     btnThreeEl.textContent = "Alerts";
-//     btnFourEl.textContent = "Numbers";
-
-//     btnOneEl.addEventListener("click", changeRed);
-//     btnTwoEl.addEventListener("click", changeGreen);
-//     btnThreeEl.addEventListener("click", changeRed);
-//     btnFourEl.addEventListener("click", changeRed);
-
-// if (btnTwoEl.click === true) {
-//     console.log("yay");
-//     // addPoints();
-// }
 }
 
 // Getting to the quiz
 
 function startQuiz() {
+    event.preventDefault();
     countdown(); 
     takeQuiz();
 }
