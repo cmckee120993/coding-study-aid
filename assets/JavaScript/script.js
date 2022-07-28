@@ -131,41 +131,30 @@ function scoreReveal() {
     question.appendChild(initials);
     question.appendChild(submit);
 
-    // Adding click function to button
+    // Adding click function to button and saving to localStorage
         submit.addEventListener("click", function() {
         localStorage.setItem('name', JSON.stringify(initials.value));
         localStorage.setItem('score', score);
-        // Highscore Score Card
-
-        function scoreCard() {
-            submit.remove();
-            initials.remove();
-            var highScores = document.createElement("ol", "id", "leaderboard");
-            title.textContent = "Leaderboard";
-            question.textContent = "Here are the top scorers of the game:";
-            question.appendChild(highScores);
-        };
-        scoreCard();
         
-        // scoreCard();
-        // // var highScores = JSON.parse(localStorage.getItem("scores"))
-        // // if (highScores === null) {
-        // //     var highScoreList = [];
-        // //     var newScore = new 
-        // // }
+        // Retrieving information from localStorage
+        var player = JSON.parse(localStorage.getItem('name'));
+        var points = localStorage.getItem('score');
+       
+        var highScoreList = document.createElement("ol", "id", "scoreList");
+        var highScoreListItem = document.createElement("li");
+        
+            initials.style.display = "none";
+            submit.style.display = "none";
+            question.textContent = "Today's Leaders";
+            title.textContent = "Scoreboard";
+            question.appendChild(highScoreList);
+            highScoreList.appendChild(highScoreListItem);
+            highScoreListItem.textContent = `${player}: ${points}`;
+
     })
 }
 
-// // Highscore Score Card
 
-// function scoreCard() {
-//     submit.remove();
-//     initials.remove();
-//     var highScores = document.createElement("ol", "id", "leaderboard");
-//     title.textContent = "Leaderboard";
-//     question.textContent = "Here are the top scorers of the game:";
-//     question.appendChild(highScores);
-// }
 // Running the quiz
 function takeQuiz() {
 startBtn.remove();
