@@ -32,7 +32,7 @@ var questions = [
         choiceB: "Booleans",
         choiceC: "Alerts",
         choiceD: "Numbers",
-        correct: "B"
+        correct: "C"
     },
 
     {
@@ -41,7 +41,7 @@ var questions = [
         choiceB: "Terminal/bash",
         choiceC: "For loops",
         choiceD: "Console.log",
-        correct: "A"
+        correct: "D"
     },
 
     {
@@ -59,7 +59,7 @@ var questions = [
         choiceB: "Curly brackets",
         choiceC: "Parenthesis",
         choiceD: "Square brackets",
-        correct: "B"
+        correct: "C"
     },
     
     {
@@ -135,15 +135,37 @@ function scoreReveal() {
         submit.addEventListener("click", function() {
         localStorage.setItem('name', JSON.stringify(initials.value));
         localStorage.setItem('score', score);
-        // var highScores = JSON.parse(localStorage.getItem("scores"))
-        // if (highScores === null) {
-        //     var highScoreList = [];
-        //     var newScore = new 
-        // }
+        // Highscore Score Card
+
+        function scoreCard() {
+            submit.remove();
+            initials.remove();
+            var highScores = document.createElement("ol", "id", "leaderboard");
+            title.textContent = "Leaderboard";
+            question.textContent = "Here are the top scorers of the game:";
+            question.appendChild(highScores);
+        };
+        scoreCard();
+        
+        // scoreCard();
+        // // var highScores = JSON.parse(localStorage.getItem("scores"))
+        // // if (highScores === null) {
+        // //     var highScoreList = [];
+        // //     var newScore = new 
+        // // }
     })
 }
 
+// // Highscore Score Card
 
+// function scoreCard() {
+//     submit.remove();
+//     initials.remove();
+//     var highScores = document.createElement("ol", "id", "leaderboard");
+//     title.textContent = "Leaderboard";
+//     question.textContent = "Here are the top scorers of the game:";
+//     question.appendChild(highScores);
+// }
 // Running the quiz
 function takeQuiz() {
 startBtn.remove();
@@ -153,7 +175,7 @@ renderQuestion();
 // Getting to the quiz
 
 function startQuiz() {
-    event.preventDefault();
+    // event.preventDefault();
     countdown(); 
     takeQuiz();
 }
