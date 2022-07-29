@@ -135,21 +135,7 @@ function scoreReveal() {
         submit.addEventListener("click", function highScore() {
             localStorage.setItem('name', JSON.stringify(initials.value));
             localStorage.setItem('score', score);
-        
-        // Retrieving information from localStorage
-            // var player = JSON.parse(localStorage.getItem('name'));
-            // var points = localStorage.getItem('score');
-        
-            //Creating the list of scores    
-            var highScoreList = document.createElement("ol", "id", "scoreList");
-            var highScoreListItem = document.createElement("li");
-            initials.style.display = "none";
-            submit.style.display = "none";
-            question.textContent = "Today's Leaders";
-            title.textContent = "Scoreboard";
-            question.appendChild(highScoreList);
-            highScoreList.appendChild(highScoreListItem);
-            highScoreListItem.textContent = `${player}: ${points}`;
+            location.href = "highscores.html";
     })
 }
 
@@ -173,5 +159,3 @@ function startQuiz() {
 var headerEl = document.querySelector("header");
 var viewScores = document.getElementById("view-scores");
 
-// View high scores
-viewScores.addEventListener('click', highScore());
