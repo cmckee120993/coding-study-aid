@@ -9,7 +9,7 @@ document.querySelector("#counter").innerHTML = `Timer: ${count} seconds`;
 
 function countdown () {
     if (count > 0) {
-        document.querySelector("#counter").innerHTML = `Timer: ${count--} seconds`;
+        document.querySelector("#counter").innerHTML = `Timer: ${count--} Seconds`;
         timer = setTimeout (countdown, 1000);
     }
     else {
@@ -132,17 +132,17 @@ function scoreReveal() {
     question.appendChild(submit);
 
     // Adding click function to button and saving to localStorage
-        submit.addEventListener("click", function() {
-        localStorage.setItem('name', JSON.stringify(initials.value));
-        localStorage.setItem('score', score);
+        submit.addEventListener("click", function highScore() {
+            localStorage.setItem('name', JSON.stringify(initials.value));
+            localStorage.setItem('score', score);
         
         // Retrieving information from localStorage
-        var player = JSON.parse(localStorage.getItem('name'));
-        var points = localStorage.getItem('score');
-       
-        var highScoreList = document.createElement("ol", "id", "scoreList");
-        var highScoreListItem = document.createElement("li");
+            // var player = JSON.parse(localStorage.getItem('name'));
+            // var points = localStorage.getItem('score');
         
+            //Creating the list of scores    
+            var highScoreList = document.createElement("ol", "id", "scoreList");
+            var highScoreListItem = document.createElement("li");
             initials.style.display = "none";
             submit.style.display = "none";
             question.textContent = "Today's Leaders";
@@ -150,10 +150,8 @@ function scoreReveal() {
             question.appendChild(highScoreList);
             highScoreList.appendChild(highScoreListItem);
             highScoreListItem.textContent = `${player}: ${points}`;
-
     })
 }
-
 
 // Running the quiz
 function takeQuiz() {
@@ -168,3 +166,12 @@ function startQuiz() {
     countdown(); 
     takeQuiz();
 }
+
+// Play again function
+
+// Header element for Play Again Button and View High Scores
+var headerEl = document.querySelector("header");
+var viewScores = document.getElementById("view-scores");
+
+// View high scores
+viewScores.addEventListener('click', highScore());

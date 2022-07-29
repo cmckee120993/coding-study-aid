@@ -1,18 +1,31 @@
 * {
-    border: dashed red;
+    background-color: #FFC300;
 }
-
 header {
     font-size: 18px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: right;
+    justify-content: space-between;
+    background-image: radial-gradient(#202FF1, #27009F);
+    color: white;
+    padding: 2%;
+}
+
+h2 {
+    padding: 2%;
+    color: #27009F; 
 }
 
 .quiz-block {
-    margin: 15%;
+    margin: 12%;
+    padding: 2%;
 }
 
+button {
+    padding: 2%;
+    background-image: radial-gradient(#27009F, #202FF1);
+    color: white;
+}
 .quiz-block button {
     display: flex;
     flex-wrap: wrap;
