@@ -122,28 +122,53 @@ function scoreReveal() {
     choiceD.style.display = "none";
 
     // Creating input submission for initials
-    var initials = document.createElement("input", "type", "text");
-    initials.setAttribute("id", "initials");
-    initials.setAttribute("placeholder", "Type your initials!");
-    initials.setAttribute("size", "20");
-    var submit = document.createElement ("button", "id", "submit");
-    submit.innerHTML = "Submit!"
-    question.appendChild(initials);
+//  function addInitials() {
+    var input = document.createElement("input", "type", "text");
+    input.setAttribute("id", "input");
+    input.setAttribute("placeholder", "Type your initials!");
+    input.setAttribute("size", "20");
+    var submit = document.createElement("button", "id", "submit");
+    submit.textContent = 'Submit!';
+    var msg = document.createElement("div", "id", "msg");
+    question.appendChild(input);
     question.appendChild(submit);
+    question.appendChild(msg);
 
-    // Adding click function to button and saving to localStorage
-        submit.addEventListener("click", function highScore() {
-            localStorage.setItem('name', JSON.stringify(initials.value));
-            localStorage.setItem('score', score);
-            location.href = "highscores.html";
-    })
-}
+    
+submit.addEventListener("click", function(event) {
+            if (document.getElementById("input").value === "") {
+                document.getElementById("msg").textContent = "Please type in your initials!"
+            } else {
+                var highScoreList = JSON.parse(localStorage.getItem("highScores"));
+                if (highScoreList === null) {
+                    var highScoreList = [];
+                    var newScore = new Object();
+                    newScore.initials = document.getElementById ('input').value;
+                    newScore.score = score;
+                    highScoreList.push(newScore);
+                    var rankedScore = highScoreList.sort(({score: a}, {score: b}) => b - a);
+                    localStorage.setItem("highScores", JSON.stringify(rankedScore));
+                }
+             else {
+                var highScore = new Object();
+                highScore.initials = document.getElementById('input').value;
+                highScore.score = score;
+                highScoreList.push(highScore);
+                var rankedScore = highScoreList.sort(({score: a}, {score: b}) => b - a);
+                    localStorage.setItem("highScores", JSON.stringify(rankedScore));
+            };
+        location.href = 'highscores.html'};
+        });
+    };
+  
+   
+   
 
 // Running the quiz
 function takeQuiz() {
 startBtn.remove();
 renderQuestion();
-}
+};
 
 // Getting to the quiz
 
@@ -151,11 +176,9 @@ function startQuiz() {
     // event.preventDefault();
     countdown(); 
     takeQuiz();
-}
+};
 
-// Play again function
 
 // Header element for Play Again Button and View High Scores
 var headerEl = document.querySelector("header");
 var viewScores = document.getElementById("view-scores");
-
