@@ -182,3 +182,6 @@ function startQuiz() {
 // Header element for Play Again Button and View High Scores
 var headerEl = document.querySelector("header");
 var viewScores = document.getElementById("view-scores");
+viewScores.addEventListener('click', function(){
+    location.href = "highscores.html";
+});
