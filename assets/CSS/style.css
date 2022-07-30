@@ -25,7 +25,9 @@ button {
     padding: 2%;
     background-image: radial-gradient(#27009F, #202FF1);
     color: white;
+    margin: 5px;
 }
+
 .quiz-block button {
     display: flex;
     flex-wrap: wrap;
@@ -43,4 +45,25 @@ button {
 
 .quiz-block p {
     font-size: 20px;
+}
+
+/* Scoreboard Styling */
+#scoreboard {
+    color:  #202FF1;
+    font-size: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border: solid 5px;
+    background-image: radial-gradient(rgb(190, 176, 176), white);
+}
+
+li {
+    padding: 5px;
+    margin: 5px;
+}
+
+/* h3 for correct/incorrect message */
+h3 {
+    font-family: arial;
+    font-size: 30 px;
+    
 }

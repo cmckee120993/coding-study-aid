@@ -8,7 +8,7 @@ var count = 75;
 document.querySelector("#counter").innerHTML = `Timer: ${count} seconds`;
 
 function countdown () {
-    if (count > 0) {
+    if (count >= 0) {
         document.querySelector("#counter").innerHTML = `Timer: ${count--} Seconds`;
         timer = setTimeout (countdown, 1000);
     }
@@ -78,6 +78,28 @@ var runningQuestionIndex = 0;
 // Function to render the question on the screen
 function renderQuestion(){
     var q = questions[runningQuestionIndex];
+    // Button styling
+    choiceA.style.backgroundImage = "radial-gradient(#27009F, #202FF1)";
+    choiceA.style.padding = "5px";
+    choiceA.style.margin = "10px";
+    choiceA.style.color = "white"
+    choiceA.style.fontSize = "20px";
+    choiceB.style.backgroundImage = "radial-gradient(#27009F, #202FF1)";
+    choiceB.style.padding = "5px";
+    choiceB.style.margin = "10px";
+    choiceB.style.color = "white"
+    choiceB.style.fontSize = "20px";
+    choiceC.style.backgroundImage = "radial-gradient(#27009F, #202FF1)";
+    choiceC.style.padding = "5px";
+    choiceC.style.margin = "10px";
+    choiceC.style.color = "white"
+    choiceC.style.fontSize = "20px";
+    choiceD.style.backgroundImage = "radial-gradient(#27009F, #202FF1)";
+    choiceD.style.padding = "5px";
+    choiceD.style.margin = "10px";
+    choiceD.style.color = "white"
+    choiceD.style.fontSize = "20px";
+
     question.textContent = q.question;
     choiceA.textContent = q.choiceA;
     choiceB.textContent = q.choiceB;
@@ -91,10 +113,10 @@ function renderQuestion(){
 function checkAnswer(answer) {
     if (questions[runningQuestionIndex].correct === answer) {
         score = score + 10;
-        console.log("Yay!");
+        rightAnswer();
     } else {
         count = count - 15;
-        console.log("Non ):");
+        wrongAnswer();
     }
     if(runningQuestionIndex < lastQuestionIndex) {
         runningQuestionIndex++;
@@ -105,12 +127,40 @@ function checkAnswer(answer) {
     }
 }
 
+// Right or Wrong Answer Messages
+var answer = document.getElementById('answers');
+answer.style.fontFamily = 'arial';
+answer.style.fontSize = '30px';
+answer.style.color = 'white';
+var message = document.createElement('h3', 'id', 'correct');
+// var right = document.createElement('h3', 'id', 'correct');
+
+function rightAnswer() {
+    if (message === true) {
+    answer.removeChild(message);
+    message.textContent = 'Correct!';
+    answer.appendChild(message);
+} else {
+    message.textContent = 'Correct!';
+    answer.appendChild(message);
+}};
+function wrongAnswer() {
+    if (message === true) {
+    answer.removeChild(message);
+    message.textContent = 'Wrong! ):';
+    answer.appendChild(message);
+    } else {
+    message.textContent = 'Wrong! ):';
+    answer.appendChild(message);
+    }
+};
 // Score earned during the quiz
 var score = 0;
 
 // Reveal score at the end of the quiz
 
 function scoreReveal() {
+    answer.removeChild(message);
     // Show score
     title.textContent = "Finished!";
     question.textContent = `Your score is ${score}.`;
@@ -120,6 +170,8 @@ function scoreReveal() {
     choiceB.style.display = "none";
     choiceC.style.display = "none";
     choiceD.style.display = "none";
+
+    // Remove rights/Wrongs from page
 
     // Creating input submission for initials
 //  function addInitials() {

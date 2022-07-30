@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Quiz High Scores</title>
+    <link rel="stylesheet" href="./assets/CSS/style.css">
+</head>
+<body>
+
+<header>
+    <h1 style="color:#27009F; padding: 2%; margin: auto;">Coding Quiz Challenge: High Scores</h1>
+</header>
+
+<div>
+    <ol id="scoreboard">
+    </ol>
+</div>
+
+<script>
+    // Scoreboard on second HTML sheet
+    var highScoreList = JSON.parse(localStorage.getItem("highScores"));
+    var scoreboardEl = document.getElementById("scoreboard");
+    if (highScoreList === null) {
+        highScoreList = [];
+    } else {
+        for (var i = 0; i < highScoreList.length; i++) {
+            var scoreItem = document.createElement("li");
+            scoreItem.setAttribute("id", i);
+            scoreItem.textContent = highScoreList[i].initials + ':' + highScoreList[i].score;
+        scoreboardEl.appendChild(scoreItem);
+        }
+    }
+
+    // Play again button
+    var playAgain = document.createElement ("button", "id", "play-again");
+    scoreboardEl.appendChild(playAgain);
+    playAgain.innerHTML = "Play again!"
+    playAgain.addEventListener("click", restartQuiz);
+    function restartQuiz(){
+        location.href = "index.html";
+    } 
+
+    // Clear scoreboard
+    var clear = document.createElement ("button", "id", "clear");
+    scoreboardEl.appendChild(clear);
+    clear.innerHTML = "Clear Scoreboard";
+    function refreshPage(){
+            window.location.reload();
+        };
+    clear.addEventListener("click", clearScores);
+    function clearScores() {
+        localStorage.clear();
+        refreshPage();
+    }
+</script>
+
+</body>
+</html>
